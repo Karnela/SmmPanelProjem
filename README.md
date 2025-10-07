@@ -1,122 +1,75 @@
-Proje Henüz Tamamlanmamış %10 Seviyesindedir.
+# SMM PANEL PLATFORMU
 
-Eklenecek Özellikler;
+# GENEL BAKIŞ
+Bu proje, güçlü ve ölçeklenebilir bir Sosyal Medya Yönetim (SMM) paneli için mikroservis mimarisine dayalı bir platformdur. Çözüm, sipariş işleme, ödeme yönetimi, kullanıcı kimlik doğrulaması ve asenkron iş akışlarını kapsar. Ön yüz (Frontend) modern bir React arayüzü kullanılarak geliştirilmiştir.
 
-Gmail Kayıt Olma (Proxy Ve Kimlik Bilgileri İle Database Kayıt Olunarak, SmmProjeyeEntegre)
+# PROJE DURUMU VE YOL HARİTASI
+Mevcut Durum: %10 TAMAMLANDI
+Proje şu an prototip aşamasındadır. Temel servis altyapısı kurulmuş olup, belirtilen özelliklerin geliştirilmesine başlanmıştır.
 
-Gelişmiş Dil Modeli (Kullanıcılar Ve Kendi Aralarında Kişilik Modellerine Göre Yorum Ekleyebilme)
+# PLANLANAN GELİŞMİŞ ÖZELLİKLER
+Projenin yol haritasındaki kritik geliştirme alanları şunlardır:
 
-Ses İşleme (Video Üzerindeki Kısımları Text Çıktısı Alarak Yorum Modelini Güçlendirme)
+# Özellik Alanı	Açıklama
+Yapay Zeka & NLP	Kişilik modellerine göre yorum ekleyebilme ve video içeriklerinden metin çıktısı (transcription) alarak yorum modelini güçlendirme.
+Gelişmiş Kayıt Sistemi	Proxy ve Kimlik Bilgileri ile Gmail Kayıt Olma (SMM panele entegre veritabanı kaydı).
+Docker İş Yükü Yönetimi	Kurulum alan cihazlar arasında, yönetici sunucusu üzerinden iş yükünü dinamik olarak dağıtarak paylaşabilme.
+Dinamik Yönetim Paneli	Kurulum alınan cihazın Görev, İş Yükü ve Özelliklerini Admin Panel üzerinde anlık görüntüleyebilme.
+Abonelik Sistemi	Özel anlaşmalı içerik üreticilerini destekleme, geçmişe dönük hesap izleme ve özel platformlar için takip yeteneği.
+Para Kazanma Sistemi	Kullanıcı Gmail hesapları üzerinden kayıtlı olmadıkları platformlara otomatik kayıt ve pasif gelir akışı oluşturma fırsatı sunma.
 
-Docker User Kurulumu İle İş Yükü Seçilecek Makine İçin Yönetici veya Admin Sunucusu Üzerinde Serverlara Dağılarak İş Yükü Paylaşabilme
-
-Admin Paneli (Kurulum Alınan Cihazın Dinamik Olarak Admin Panel Üzerinde Görev-İş Yükü-Özellikleri'nin Görüntülenmesi)
-
-Aylık Abonelik Sistemi (Özel Anlaşmalı İçerik Üretici Desteklenmesi, Seçili Hesapların Geçmişe Dönük ve Seçilen Platforumlar için İzlenmesi)
-Para Kazanma (İçerik Üreticisi Olmayan Kullanıcılar için Gmail Hesapları Sisteme Girildiği Zaman, Gmail İle Kayıtlı Oldukları Platforumların Kontrolü ve Kayıtlı Olmadıkları Platforumlara Kayıt Olunarak, SmmPanele Aktarılacak, Harici Olarak Telefon Numaraları İle Girdikleri Zaman Desteklenen Sayı Kadar Gmail Hesabı ile Platforumlara Kayıt Olunarak Hesapları İle Para Kazanabilme Fırsatı, Ve Panel Üzerinden Açılan Hesapların Takibi ile Aylık Pasif Gelir İmkanı Premium Hesaplar İçin Fazladan Kazanç Sistemi)
-
-
-🚀 Proje Adı: SMM Panel Platformu
-✨ Genel Bakış
-Bu proje, güçlü ve ölçeklenebilir bir Sosyal Medya Pazarlama (SMM) paneli platformudur. Mikroservis mimarisini kullanarak sipariş işleme, ödeme yönetimi, kullanıcı kimlik doğrulaması ve asenkron işçi süreçlerini (workers) birbirinden bağımsız hale getirir. Frontend uygulaması modern bir React arayüzü ile geliştirilmiştir.
-
-🏗️ Teknoloji Yığını (Tech Stack)
-Bu platform, performans ve ölçeklenebilirlik için çeşitli diller ve araçlar kullanılarak inşa edilmiştir:
+# TEKNOLOJİ YIĞINI (TECH STACK)
+Bu platformun altyapısı, performans ve ölçeklenebilirlik sağlamak için çeşitli diller ve araçlar kullanılarak inşa edilmiştir:
 
 Kategori	Teknolojiler	Kullanım Amacı
 Backend Servisleri	Python (FastAPI, Celery, SQLAlchemy), Go (Auth Service)	Sipariş yönetimi, ödeme işleme ve yüksek performanslı kimlik doğrulama.
 Frontend	React, TypeScript, Vite (Monorepo içinde)	Kullanıcı ve Admin arayüzleri.
 Veritabanı	PostgreSQL	Güvenilir ve ilişkisel veri depolama.
-Mesaj Kuyruğu	RabbitMQ / Redis (Celery için)	Asenkron görevler (sipariş işleme, medya).
+Asenkron İşlem	RabbitMQ / Redis	Arka plan görevleri ve mesaj kuyruğu yönetimi.
 Altyapı	Docker, Docker Compose	Yerel geliştirme ve Dağıtım (Deployment) yönetimi.
-DevOps/Güvenlik	Falco, Vector, Grafana	Gözetim (Monitoring), log toplama ve güvenlik.
+Gözetim/Güvenlik	Falco, Vector, Grafana	Sistem gözetimi (Monitoring), log toplama ve güvenlik analizi.
 
-E-Tablolar'a aktar
-⚙️ Kurulum ve Çalıştırma
-Yerel geliştirme ortamını kurmak için Docker Compose kullanıyoruz.
+# KURULUM VE ÇALIŞTIRMA
+Yerel geliştirme ortamını kurmak için Docker Compose kullanınız.
 
-1. Ön Gereksinimler
-Projenizi çalıştırmak için sisteminizde kurulu olması gerekenler:
-
+# 1. Ön Gereksinimler
 Git
 
 Docker
 
-Docker Compose (Veya Docker Desktop ile birlikte gelir.)
+Docker Compose
 
-2. Ortam Değişkenleri
-Kök dizindeki .env dosyasını, env.example dosyasını temel alarak oluşturun ve gerekli tüm sırları (API anahtarları, veritabanı şifreleri vb.) doldurun.
+# 2. Ortam Değişkenleri
+Kök dizinindeki env.example dosyasını temel alarak .env dosyasını oluşturun ve TÜM GİZLİ BİLGİLERİ doldurunuz.
 
 Bash
 
 cp .env.example .env
-# .env dosyasını düzenleyin ve gizli anahtarları girin
-3. Projeyi Başlatma
-Projenin tüm servislerini (Postgres, RabbitMQ, Backend, Frontend, Workers) tek bir komutla başlatın:
+.env dosyasını hassas verilerle düzenleyiniz
 
-Bash
+# 3. Yönetim Komutları
+Projenin temel yönetimini aşağıdaki PowerShell (PS1) dosyaları ile gerçekleştiriniz:
 
-.\start.ps1
-.\stop.ps1 
-.\reload.ps1
-.\deep-clean.ps1 
+# Komut Dosyası	Açıklama
+.\start.ps1	Tüm servisleri (Backend, DB, Workers, vb.) başlatır.
+.\stop.ps1	Çalışan tüm Docker container'larını durdurur.
+.\reload.ps1	Servisleri yeniden başlatır.
+.\deep-clean.ps1	Tüm container'ları ve diskteki imajları temizler.
 
 
-Servis	Bağlantı Noktası (Port)
+# 4. Bağlantı Bilgileri
+Servis	Bağlantı Noktası
 API Gateway	http://localhost:<PORT_NUMARASI>
 Frontend (Geliştirme)	http://localhost:<VITE_DEV_PORT>
 Grafana	http://localhost:3000
 
-E-Tablolar'a aktar
-4. Geliştirme Ortamı Temizliği
-Tüm container'ları durdurmak ve temizlemek için:
+# KATKIDA BULUNMA
+Proje geliştirmeye katkıda bulunmak isterseniz, lütfen standart Çatallama (Fork) ve Çekme İsteği (Pull Request) akışını takip ediniz.
 
-Bash
+# LİSANS
+Bu proje GNU Genel Kamu Lisansı sürüm 3 (GPLv3) ile lisanslanmıştır.
 
-docker-compose down
-(Ya da kök dizinindeki stop.ps1 dosyasını kullanabilirsin.)
-
-🤝 Katkıda Bulunma
-Proje geliştirmeye katkıda bulunmak istersen, lütfen aşağıdaki adımları takip et:
-
-Bu depoyu (repository) çatallayın (fork).
-
-Yeni bir özellik dalı (feature branch) oluşturun: git checkout -b ozellik/yeni-ozellik
-
-Değişikliklerinizi yapın ve commit atın: git commit -m 'feat: yeni özellik eklendi'
-
-Dalı orijinal depoya itin (push): git push origin ozellik/yeni-ozellik
-
-Bir Pull Request (PR) açın.
-
-📝 Lisans
-Bu proje <Lisans GPLv3 > ile lisanslanmıştır.
-
-📧 İletişim
+# İLETİŞİM
 Proje Sahibi: Karnela
 
 E-posta: Kocahestiyayabedenem@gmail.com
-
-
-
-MIT License
-
-Copyright (c) 2025 Karnela
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
