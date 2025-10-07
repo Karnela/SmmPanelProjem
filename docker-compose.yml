@@ -1,0 +1,110 @@
+services:
+  postgres_db:
+    image: postgres:14-alpine
+    container_name: smm_postgres_db
+    environment:
+      POSTGRES_DB: ${DB_NAME:-smm_panel}
+      POSTGRES_USER: ${DB_USER:-admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-admin}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - smm_panel_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3.9-management-alpine
+    container_name: smm_rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - smm_panel_network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: ./core-services/auth-service/Dockerfile
+    container_name: auth-service
+    networks:
+      - smm_panel_network
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+
+  order_handler_service:
+    build:
+      context: .
+      dockerfile: ./core-services/order-handler-service/Dockerfile
+    container_name: smm_order_handler
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./core-services/order-handler-service/app:/app
+      - ./infrastructure:/app/infrastructure
+    environment:
+      DB_HOST: postgres_db
+      DB_USER: ${DB_USER:-admin}
+      DB_PASS: ${DB_PASSWORD:-admin}
+      DB_NAME: ${DB_NAME:-smm_panel}
+      DB_PORT: 5432
+    networks:
+      - smm_panel_network
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./websitem
+      dockerfile: packages/apps/frontend/Dockerfile
+    container_name: smm_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./websitem:/app
+      - /app/node_modules
+    networks:
+      - smm_panel_network
+    depends_on:
+      order_handler_service:
+        condition: service_started
+      auth-service:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5173"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api_gateway:
+    image: nginx:alpine
+    container_name: smm_api_gateway
+    ports:
+      - "80:80"
+    volumes:
+      - ./infrastructure/api-gateway-nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - smm_panel_network
+    depends_on:
+      frontend:
+        condition: service_healthy
+
+networks:
+  smm_panel_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+

@@ -1,0 +1,19 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.container {
+    padding-top: 90px;
+    padding-bottom: 40px;
+}
+
+
+.dashboard-container {
+    margin-top: 90px; 
+}
+
+
+.page-container {
+  padding-top: 100px; 
+  padding-bottom: 40px; 
+}

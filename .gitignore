@@ -1,0 +1,190 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# celery
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyderworkspace
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+# VSCode
+.vscode/
+
+# Docker
+docker-compose.override.yml
+
+# 1. Genel İşletim Sistemi ve IDE Dosyaları
+# Windows
+Thumbs.db
+
+# macOS
+.DS_Store
+
+# IDE'ler (VS Code ve PyCharm)
+.idea/
+.vscode/
+# VS Code'un uzantı/ayarlarını paylaşmak istersen bu iki satırı yoruma al (comment out)
+#.vscode/settings.json
+#.vscode/extensions.json
+*.history
+
+# 2. Python ve Çevreye Ait Dosyalar (core-services, workers, infrastructure)
+# Python sanal ortamları
+venv/
+env/
+
+# Python bytecode dosyaları
+__pycache__/
+*.pyc
+*.pyd
+
+# Alembic (Database Migrations)
+# Migration çıktıları genellikle tutulur ancak bazı dosyalar hariç tutulabilir.
+# Genellikle sadece 'versions' klasörü tutulur.
+# core-services/order-handler-service/app/migrations/versions/
+# infrastructure/database/migrations/versions/
+
+# Celery
+celerybeat-schedule  # Celery'nin çalışma zamanı dosyası, silinmeli.
+
+# 3. Node.js/TypeScript/Frontend Dosyaları (websitem, web)
+# Node Modülleri (Tüm node_modules klasörleri)
+node_modules/
+websitem/node_modules/
+websitem/packages/apps/**/node_modules/
+websitem/packages/packages/**/node_modules/
+web/**/node_modules/
+
+# Paket Kilit Dosyaları (Yarn kullanıyorsan kalsın, ama temizlik için ekleyelim)
+package-lock.json
+npm-debug.log
+yarn-error.log
+
+# Frontend Derleme ve Çalışma Zamanı Çıktıları (Vite, Next, vs. temp dosyaları)
+dist/
+build/
+.vite/
+*.log
+
+# Web/websitem içindeki her uygulama için build/dist/cache dosyaları
+websitem/packages/apps/**/dist
+websitem/packages/apps/**/build
+websitem/packages/apps/**/.vite
+
+# 4. Güvenlik ve Hassas Veriler
+.env  # Ortam değişkenleri/gizli anahtarlar içerir, ASLA yüklenmemeli
+.env.*
+
+# 5. Diğer Proje Dili Çıktıları
+# C# / .NET (payment-processor-service için)
+[Bb]in/
+[Oo]bj/
+*.user
+*.pdb
+
+# Go (auth-service için)
+*.exe
+*.test
+*.out
+/bin/

@@ -1,0 +1,18 @@
+{
+  "name": "websitem-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/apps/*",
+    "packages/packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  },
+  "packageManager": "yarn@1.22.22"
+}
